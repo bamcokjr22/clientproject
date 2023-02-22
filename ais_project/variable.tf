@@ -2,11 +2,17 @@
 # VARIABLES #
 #############
 
-variable "prefix" {}
+variable "prefix" {
+    default = "snc"
+}
 
-variable "state_sa_name" {}
+variable "state_sa_name" {
+    default = "snctfstatestorage"
+}
 
-variable "container_name" {}
+variable "container_name" {
+    default = "snc"
+}
 
 # variable "access_key" {}
 

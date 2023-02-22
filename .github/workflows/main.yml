@@ -49,7 +49,7 @@ jobs:
       run: terraform workspace select $ENV_NAME || terraform workspace new $ENV_NAME
 
     - name: Terraform Plan
-      run: terraform plan -var-file="dev.tfvars" -out sncdev.tfplan
+      run: terraform plan -out sncdev.tfplan
 
     - name: Terraform Apply
       run: terraform apply sncdev.tfplan
