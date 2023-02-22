@@ -52,4 +52,4 @@ jobs:
       run: terraform plan -out sncdev.tfplan
 
     - name: Terraform Apply
-      run: terraform apply sncdev.tfplan --auto-approve
+      run: terraform apply sncdev.tfplan
