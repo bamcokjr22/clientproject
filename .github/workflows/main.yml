@@ -27,16 +27,21 @@ jobs:
       with:
         terraform_version: 1.3.9
 
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: '{"clientId":"${{ secrets.ARM_CLIENT_ID }}","clientSecret":"${{ secrets.ARM_CLIENT_SECRET }}","subscriptionId":"${{ secrets.ARM_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.ARM_TENANT_ID }}"}'
+
     - name: Terraform Init
-      id: init
-      env:
-        ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-        ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-        ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-        ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-        # RESOURCE_GROUP: ${{ secrets.RESOURCE_GROUP }}
-        # STORAGE_ACCOUNT: ${{ secrets.STORAGE_ACCOUNT }}
-        # CONTAINER_NAME: ${{ secrets.CONTAINER_NAME }}
+      # id: init
+      # env:
+      #   # ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      #   # ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+      #   # ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+      #   # ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      #   # RESOURCE_GROUP: ${{ secrets.RESOURCE_GROUP }}
+      #   # STORAGE_ACCOUNT: ${{ secrets.STORAGE_ACCOUNT }}
+      #   # CONTAINER_NAME: ${{ secrets.CONTAINER_NAME }}
       run: terraform init
 
     - name: Terraform Create or Select Workspace
