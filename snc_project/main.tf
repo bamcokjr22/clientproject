@@ -10,7 +10,7 @@ module "snc_resource_group" {
 
 resource "azurerm_virtual_network" "sncvnet" {
   address_space       = ["10.52.0.0/16"]
-  location            = module.snc_resource_group.location
+  location            = module.snc_resource_group.resource_group_location
   name                = "${random_id.prefix.hex}-vn"
   resource_group_name = module.snc_resource_group.resource_group_name
 }
