@@ -10,8 +10,8 @@ env:
   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
 
 jobs:
-  terraform:
-    name: 'Terraform'
+  dev:
+    name: 'DEV'
     runs-on: ubuntu-latest
 
     # Set the working directory to main for the config files
