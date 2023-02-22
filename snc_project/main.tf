@@ -1,3 +1,7 @@
+resource "random_id" "prefix" {
+  byte_length = 8
+}
+
 module "snc_resource_group" {
     source = "../modules/ResourceGroup"
     resource_group_name = var.snc_resource_group_name
