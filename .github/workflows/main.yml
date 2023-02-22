@@ -34,7 +34,7 @@ jobs:
     - name: Azure Login
       uses: azure/login@v1
       with:
-        creds: '{"clientId":"$ARM_CLIENT_ID","clientSecret":"$ARM_CLIENT_SECRET","subscriptionId":"$ARM_SUBSCRIPTION_ID","tenantId":"$ARM_TENANT_ID"}'
+        creds: '{"clientId":"$ARM_CLIENT_ID","clientSecret":"$ARM_CLIENT_SECRET","subscriptionId":"$ARM_SUBSCRIPTION_ID","tenantId":"${{ secrets.ARM_TENANT_ID }}"}'
 
     - name: Terraform Init
       # id: init
@@ -50,4 +50,3 @@ jobs:
 
     - name: Terraform Plan
       run: terraform plan -out sncdev.tfplan
-      
