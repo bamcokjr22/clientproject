@@ -42,8 +42,7 @@ jobs:
     - name: Terraform Create or Select Workspace
       env:
         ENV_NAME: DEV
-      run: echo $ENV_NAME
-      # run: terraform workspace select $ENV_NAME || terraform workspace new $ENV_NAME
+      run: terraform workspace select $ENV_NAME || terraform workspace new $ENV_NAME
 
     - name: Terraform Plan
       run: terraform plan -out sncdev.tfplan
