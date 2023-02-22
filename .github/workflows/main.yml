@@ -1,4 +1,4 @@
-name: 'Terraform'
+name: 'SNC'
 
 on: [push, pull_request]
 
@@ -50,3 +50,6 @@ jobs:
 
     - name: Terraform Plan
       run: terraform plan -out sncdev.tfplan
+
+    - name: Terraform Apply
+      run: terraform apply sncdev.tfplan --auto-approve
