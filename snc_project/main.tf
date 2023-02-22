@@ -4,20 +4,20 @@ module "snc_resource_group" {
     location = var.snc_resource_group_location
 }
 
-# resource "azurerm_virtual_network" "test" {
-#   address_space       = ["10.52.0.0/16"]
-#   location            = local.resource_group.location
-#   name                = "${random_id.prefix.hex}-vn"
-#   resource_group_name = local.resource_group.name
-# }
+resource "azurerm_virtual_network" "sncvnet" {
+  address_space       = ["10.52.0.0/16"]
+  location            = module.snc_resource_group.location
+  name                = "${random_id.prefix.hex}-vn"
+  resource_group_name = module.snc_resource_group.resource_group_name
+}
 
-# resource "azurerm_subnet" "test" {
-#   address_prefixes                               = ["10.52.0.0/24"]
-#   name                                           = "${random_id.prefix.hex}-sn"
-#   resource_group_name                            = local.resource_group.name
-#   virtual_network_name                           = azurerm_virtual_network.test.name
-#   enforce_private_link_endpoint_network_policies = true
-# }
+resource "azurerm_subnet" "sncsubnet" {
+  address_prefixes                               = ["10.52.0.0/24"]
+  name                                           = "${random_id.prefix.hex}-sn"
+  resource_group_name                            = module.snc_resource_group.resource_group_name
+  virtual_network_name                           = azurerm_virtual_network.sncvnet.name
+  enforce_private_link_endpoint_network_policies = true
+}
 
 # module "aks" {
 #   source = "../.."
