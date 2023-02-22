@@ -13,3 +13,4 @@ variable "container_name" {}
 variable "net_plugin" {
     default = "azure"  #Options are "azure" or "kubenet"
 }
+
