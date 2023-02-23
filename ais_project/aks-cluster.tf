@@ -215,3 +215,4 @@ resource "azurerm_role_assignment" "agic_appgw" {
   principal_id         = module.aks.agic_id
 
 }
+
