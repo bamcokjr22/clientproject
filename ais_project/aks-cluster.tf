@@ -11,7 +11,7 @@
 
 resource "azurerm_resource_group" "rg-aks" {
   name     = "snc-ais-aks-rg"
-  location = "centralus"
+  location = "Central US"
 }
 
 resource "azurerm_container_registry" "acr" {
