@@ -11,7 +11,7 @@ resource "azurerm_kubernetes_cluster" "akscluster" {
   dns_prefix          = var.prefix
   location            = var.location
   resource_group_name = var.resource_group_name
-  kubernetes_version = "1.21.1"
+  kubernetes_version = "1.24.9"
 
   addon_profile {
     oms_agent {
