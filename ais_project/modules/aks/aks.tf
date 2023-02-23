@@ -30,7 +30,7 @@ resource "azurerm_kubernetes_cluster" "akscluster" {
     os_disk_size_gb = 30
     type            = "VirtualMachineScaleSets"
     node_count = 3
-    vnet_subnet_id = var.vnet_subnet_id
+    # vnet_subnet_id = var.vnet_subnet_id
   }
 
   # network_profile {
