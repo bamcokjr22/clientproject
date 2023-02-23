@@ -175,14 +175,14 @@ resource "azurerm_role_assignment" "appdevs_user" {
   scope                = module.aks.aks_id
   role_definition_name = "Azure Kubernetes Service Cluster User Role"
   # principal_id         = data.terraform_remote_state.aad.outputs.appdev_object_id
-  principal_id = data.azurerm_client_config.current.client_id
+  principal_id = data.azurerm_client_config.current.object_id
 }
 
 resource "azurerm_role_assignment" "aksops_admin" {
   scope                = module.aks.aks_id
   role_definition_name = "Azure Kubernetes Service RBAC Cluster Admin"
   # principal_id         = data.terraform_remote_state.aad.outputs.aksops_object_id
-  principal_id = data.azurerm_client_config.current.client_id
+  principal_id = data.azurerm_client_config.current.object_id
 }
 
 # This role assigned grants the current user running the deployment admin rights
