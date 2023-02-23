@@ -46,7 +46,7 @@ resource "azurerm_subnet" "aks_subnet" {
 }
 
 resource "azurerm_public_ip" "snc_pip" {
-  name                = "example-pip"
+  name                = "snc-pip"
   resource_group_name = azurerm_resource_group.rg-aks.name
   location            = azurerm_resource_group.rg-aks.location
   allocation_method   = "Dynamic"
@@ -69,8 +69,8 @@ resource "azurerm_application_gateway" "network" {
   location            = azurerm_resource_group.rg-aks.location
 
   sku {
-    name     = "Standard_Small"
-    tier     = "Standard"
+    name     = "Standard_Medium"
+    tier     = "Standard_V2"
     capacity = 2
   }
 
