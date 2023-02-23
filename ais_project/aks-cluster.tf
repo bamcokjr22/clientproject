@@ -49,7 +49,7 @@ resource "azurerm_public_ip" "snc_pip" {
   name                = "snc-pip"
   resource_group_name = azurerm_resource_group.rg-aks.name
   location            = azurerm_resource_group.rg-aks.location
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
   sku = "Standard"
 }
 
