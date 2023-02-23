@@ -34,7 +34,6 @@ variable "gateway_name" {
 
 }
 
-
 variable "gateway_id" {
 
 }
