@@ -1,6 +1,17 @@
 # These resources will set up the required permissions for 
 # AAD Pod Identity (v1)
 
+resource "azurerm_key_vault" "snckeyvault" {
+  name                        = "sncaiskeyvault"
+  location                    = azurerm_resource_group.rg-aks.name
+  resource_group_name         = azurerm_resource_group.rg-aks.location
+  enabled_for_disk_encryption = true
+  tenant_id                   = data.azurerm_client_config.current.tenant_id
+  soft_delete_retention_days  = 7
+  purge_protection_enabled    = false
+
+  sku_name = "standard"
+}
 
 # Managed Identity for Pod Identity
 resource "azurerm_user_assigned_identity" "aks_pod_identity" {
@@ -25,7 +36,8 @@ resource "azurerm_role_assignment" "aks_vm_contributor" {
 
 # Azure Key Vault Access Policy for Managed Identity for AAD Pod Identity
 resource "azurerm_key_vault_access_policy" "aad_pod_identity" {
-  key_vault_id = data.terraform_remote_state.aks-support.outputs.key_vault_id
+  # key_vault_id = data.terraform_remote_state.aks-support.outputs.key_vault_id
+  key_vault_id = azurerm_key_vault.snckeyvault.id
   tenant_id    = data.azurerm_client_config.current.tenant_id
   object_id    = azurerm_user_assigned_identity.aks_pod_identity.principal_id
 

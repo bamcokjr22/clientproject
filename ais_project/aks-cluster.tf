@@ -9,8 +9,6 @@
 #   location = data.terraform_remote_state.existing-lz.outputs.lz_rg_location
 # }
 
-resource "azurerm_client_config" "current" {}
-
 resource "azurerm_resource_group" "rg-aks" {
   name     = "snc-ais-aks-rg"
   location = "Central US"
